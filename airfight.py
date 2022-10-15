@@ -1,7 +1,11 @@
 import pygame
 pygame.init()
 
-screen = pygame.display.set_mode([500, 500])
+height=950
+width=1800
+
+
+screen = pygame.display.set_mode([width,height])
 running = True
 
 while running:
@@ -9,7 +13,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     screen.fill((255,255,255))
-    pygame.draw.circle(screen, (0,0,255),(250,250),75)
+    pygame.draw.circle(screen, (255,0,0),(width/2,height/2),75)
 
     pygame.display.flip()
 
