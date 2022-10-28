@@ -13,7 +13,13 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     screen.fill((255,255,255))
-    pygame.draw.circle(screen, (255,0,0),(width/2,height/2),75)
+    pygame.draw.circle(screen, (0,0,255),(width/2,height/2),300)
+   
+    pygame.draw.circle(screen, (255,255,255),(width/2,height/2),200)
+    pygame.draw.circle(screen, (0,0,255),(width/2,height/2),100)
+
+
+
 
     pygame.display.flip()
 
