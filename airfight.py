@@ -1,7 +1,21 @@
 import pygame
+from pygame.locals import (
+    K_UP,
+    K_DOWN,
+    K_LEFT,
+    K_RIGHT,
+    K_ESCAPE,
+    KEYDOWN,
+    QUIT,
+)
+
 pygame.init()
 
-screen = pygame.display.set_mode([500, 500])
+height=950
+width=1800
+
+
+screen = pygame.display.set_mode([width,height])
 running = True
 
 while running:
@@ -9,8 +23,13 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     screen.fill((255,255,255))
-    pygame.draw.circle(screen, (0,0,255),(250,250),75)
-    pygame.draw.rect(screen, (0,0,0), (30,30,60,60),10 )
+    pygame.draw.circle(screen, (0,0,255),(width/2,height/2),300)
+   
+    pygame.draw.circle(screen, (255,255,255),(width/2,height/2),200)
+    pygame.draw.circle(screen, (0,0,255),(width/2,height/2),100)
+
+
+
 
     pygame.display.flip()
 
