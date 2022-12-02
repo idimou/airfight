@@ -9,28 +9,39 @@ from pygame.locals import (
     QUIT,
 )
 
+# Define constants for the screen width and height
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+
 pygame.init()
 
-height=950
-width=1800
+# Create the screen object
+# The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-
-screen = pygame.display.set_mode([width,height])
+# Variable to keep our main loop running
 running = True
 
+# start of the game loop
 while running:
+    
+    # Check if the user clicked the window close button.
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+    # Fill the background with white        
     screen.fill((255,255,255))
-    pygame.draw.circle(screen, (0,0,255),(width/2,height/2),300)
-   
-    pygame.draw.circle(screen, (255,255,255),(width/2,height/2),200)
-    pygame.draw.circle(screen, (0,0,255),(width/2,height/2),100)
 
+    # Create a surface and pass in a tuple containing its length and width
+    surf = pygame.Surface((100, 50))
+    # Give the surface a color to separate it from the background
+    surf.fill((0, 0, 0))
+    screen.blit(surf, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
+    
+    # Flip everything to the display
+    pygame.display.flip() 
 
-
-
-    pygame.display.flip()
+# end of the game loop
 
 pygame.quit()
