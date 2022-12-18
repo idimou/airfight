@@ -22,7 +22,7 @@ SCREEN_HEIGHT = 600
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
-        self.surf = pygame.image.load("Sprites/Plane/Fly-small.png").convert()
+        self.surf = pygame.image.load("Sprites/Plane/tomcat_black_small.png").convert()
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         self.rect = self.surf.get_rect()
 
