@@ -116,7 +116,7 @@ while running:
     player.update(pressed_keys)
 
     # Update enemy position
-    enemies.update()
+    # enemies.update()
 
     # Fill the background with white        
     screen.fill((100,200,255))
@@ -135,8 +135,15 @@ while running:
     for entity in all_sprites:
         screen.blit(entity.surf, entity.rect)
 
+     # Check if any enemies have collided with the player
+    if pygame.sprite.spritecollideany(player, enemies):
+    # If so, then remove the player and stop the loop
+        player.kill()
+        running = False   
+
     # Flip everything to the display
     pygame.display.flip() 
+
 
 # end of the game loop
 
