@@ -28,13 +28,13 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, pressed_keys):
         if pressed_keys[K_UP]:
-            self.rect.move_ip(0, -1)
+            self.rect.move_ip(0, -5)
         if pressed_keys[K_DOWN]:
-            self.rect.move_ip(0, 1)
+            self.rect.move_ip(0,5)
         if pressed_keys[K_LEFT]:
-            self.rect.move_ip(-1, 0)
+            self.rect.move_ip(-5, 0)
         if pressed_keys[K_RIGHT]:
-            self.rect.move_ip(1, 0)
+            self.rect.move_ip(5, 0)
 
       #  Keep player on the screen
         if self.rect.left < 0:
@@ -60,7 +60,7 @@ class Enemy(pygame.sprite.Sprite):
                 random.randint(0, SCREEN_HEIGHT),
             )
         )
-        self.speed = random.randint(1, 5)/5
+        self.speed = random.randint(5, 20)
 
     # Move the sprite based on speed
     # Remove the sprite when it passes the left edge of the screen
@@ -73,6 +73,7 @@ class Enemy(pygame.sprite.Sprite):
 # initialization code ______________________________________________
 pygame.init()
 
+clock = pygame.time.Clock()
 # Create the screen object
 # The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -143,7 +144,7 @@ while running:
 
     # Flip everything to the display
     pygame.display.flip() 
-
+    clock.tick(30)
 
 # end of the game loop
 
