@@ -52,7 +52,7 @@ class Player(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy, self).__init__()
-        self.surf = pygame.image.load("Sprites/Bullet/missile-150x51.png").convert()
+        self.surf = pygame.image.load("Sprites/Bullet/missile.png").convert()
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         self.rect = self.surf.get_rect(
             center=(
@@ -122,14 +122,14 @@ while running:
     screen.fill((100,200,255))
 
     # Create a surface and pass in a tuple containing its length and width
-    surf = pygame.Surface((100, 50))
+    # surf = pygame.Surface((100, 50))
     # Give the surface a color to separate it from the background
-    surf.fill((0, 0, 0))
+    # surf.fill((0, 0, 0))
     # screen.blit(surf, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
     
     # screen.blit(player.surf, (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
     # Draw the player on the screen
-    screen.blit(player.surf, player.rect)
+    # screen.blit(player.surf, player.rect)
 
     # Draw all sprites
     for entity in all_sprites:
