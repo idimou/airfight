@@ -22,29 +22,21 @@ SCREEN_HEIGHT = 600
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
-        self.surf = pygame.image.load("Sprites/Plane/tomcat_black_small.png").convert()
+        self.surf = pygame.image.load("Sprites/Plane/pavlos.jpg").convert()
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
+        # self.surf = pygame.Surface((75, 25))
+        # self.surf.fill((255, 255, 255))
         self.rect = self.surf.get_rect()
 
     def update(self, pressed_keys):
         if pressed_keys[K_UP]:
-<<<<<<< HEAD
-            self.rect.move_ip(0, -10)
+            self.rect.move_ip(0, -15)
         if pressed_keys[K_DOWN]:
-            self.rect.move_ip(0, 10)
+            self.rect.move_ip(0,15)
         if pressed_keys[K_LEFT]:
-            self.rect.move_ip(-10, 0)
+            self.rect.move_ip(-15, 0)
         if pressed_keys[K_RIGHT]:
-            self.rect.move_ip(10, 0)
-=======
-            self.rect.move_ip(0, -5)
-        if pressed_keys[K_DOWN]:
-            self.rect.move_ip(0,5)
-        if pressed_keys[K_LEFT]:
-            self.rect.move_ip(-5, 0)
-        if pressed_keys[K_RIGHT]:
-            self.rect.move_ip(5, 0)
->>>>>>> 092547a5d122ff1012f4b0aa0b249fe15e6d1791
+            self.rect.move_ip(15, 0)
 
       #  Keep player on the screen
         if self.rect.left < 0:
@@ -62,8 +54,10 @@ class Player(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy, self).__init__()
-        self.surf = pygame.image.load("Sprites/Bullet/missile.png").convert()
+        self.surf = pygame.image.load("Sprites/Bullet/missile-40x10.png").convert()
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
+        # self.surf = pygame.Surface((30, 10))
+        # self.surf.fill((255, 255, 255))
         self.rect = self.surf.get_rect(
             center=(
                 random.randint(SCREEN_WIDTH + 20, SCREEN_WIDTH + 100),
@@ -84,17 +78,13 @@ class Enemy(pygame.sprite.Sprite):
 pygame.init()
 
 clock = pygame.time.Clock()
-<<<<<<< HEAD
-
-=======
->>>>>>> 092547a5d122ff1012f4b0aa0b249fe15e6d1791
 # Create the screen object
 # The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # Create a custom event for adding a new enemy
 ADDENEMY = pygame.USEREVENT + 1
-pygame.time.set_timer(ADDENEMY, 250)
+pygame.time.set_timer(ADDENEMY, 500)
 
 # Instantiate player. Right now, this is just a rectangle.
 player = Player()
@@ -159,10 +149,6 @@ while running:
     # Flip everything to the display
     pygame.display.flip() 
     clock.tick(30)
-<<<<<<< HEAD
-
-=======
->>>>>>> 092547a5d122ff1012f4b0aa0b249fe15e6d1791
 
 # end of the game loop
 
