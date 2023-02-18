@@ -31,8 +31,10 @@ class Player(pygame.sprite.Sprite):
     def update(self, pressed_keys):
         if pressed_keys[K_UP]:
             self.rect.move_ip(0, -15)
+            move_up_sound.play()
         if pressed_keys[K_DOWN]:
             self.rect.move_ip(0,15)
+            move_down_sound.play()
         if pressed_keys[K_LEFT]:
             self.rect.move_ip(-15, 0)
         if pressed_keys[K_RIGHT]:
@@ -42,7 +44,7 @@ class Player(pygame.sprite.Sprite):
         if self.rect.left < 0:
             self.rect.left = 0
         elif self.rect.right > SCREEN_WIDTH:
-            self.rect.right = SCREEN_WIDTH/2
+            self.rect.right = SCREEN_WIDTH
         if self.rect.top <= 0:
             self.rect.top = 0
         elif self.rect.bottom >= SCREEN_HEIGHT:
@@ -75,7 +77,17 @@ class Enemy(pygame.sprite.Sprite):
 
 
 # initialization code ______________________________________________
+pygame.mixer.init()
 pygame.init()
+
+pygame.mixer.music.load("Sounds/Apoxode_-_Electric_1.mp3")
+pygame.mixer.music.play(loops=-1)
+
+# Load all sound files
+# Sound sources: Jon Fincher
+move_up_sound = pygame.mixer.Sound("Sounds/Rising_putter.ogg")
+move_down_sound = pygame.mixer.Sound("Sounds/Falling_putter.ogg")
+collision_sound = pygame.mixer.Sound("Sounds/Collision.ogg")
 
 clock = pygame.time.Clock()
 # Create the screen object
@@ -98,10 +110,12 @@ all_sprites.add(player)
 
 # Variable to keep our main loop running
 running = True
+TimesShot = 0
+Lives = 300
 
 # start of the game loop ___________________________________________
 while running:
-    
+    pygame.display.set_caption(str(TimesShot))
     # Check if the user clicked the window close button.
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -143,8 +157,15 @@ while running:
      # Check if any enemies have collided with the player
     if pygame.sprite.spritecollideany(player, enemies):
     # If so, then remove the player and stop the loop
-        player.kill()
-        running = False   
+        
+        TimesShot = TimesShot + 1
+
+        if TimesShot == Lives:
+            move_up_sound.stop()
+            move_down_sound.stop()
+            collision_sound.play()
+            player.kill()
+            running = False   
 
     # Flip everything to the display
     pygame.display.flip() 
