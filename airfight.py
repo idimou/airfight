@@ -75,6 +75,12 @@ class Enemy(pygame.sprite.Sprite):
         if self.rect.right < 0:
             self.kill()
 
+def resetPositions():
+    enemies.clear(screen, screen)
+    for enemy in enemies:
+        enemy.kill()
+    # enemies.draw(screen)
+
 
 # initialization code ______________________________________________
 pygame.mixer.init()
@@ -111,7 +117,7 @@ all_sprites.add(player)
 # Variable to keep our main loop running
 running = True
 TimesShot = 0
-Lives = 300
+Lives = 3
 
 # start of the game loop ___________________________________________
 while running:
@@ -159,6 +165,7 @@ while running:
     # If so, then remove the player and stop the loop
         
         TimesShot = TimesShot + 1
+        resetPositions()
 
         if TimesShot == Lives:
             move_up_sound.stop()
