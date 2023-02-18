@@ -13,8 +13,8 @@ from pygame.locals import (
     QUIT,
 )
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1600
+SCREEN_HEIGHT = 1200
 GameLoopRunning = True
 TimesShot = 0
 Lives = 3
